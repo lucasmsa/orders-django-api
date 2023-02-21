@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.db import models
+from core.util import phone_regex, validate_deadline
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
@@ -35,3 +37,27 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = "email"
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
+class Order(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+    contact_name = models.CharField(max_length=255)
+    contact_phone = models.CharField(validators=[phone_regex], max_length=17)
+    description = models.TextField()
+    real_state_agency = models.CharField(max_length=255)
+    company = models.CharField(max_length=255)
+    deadline = models.DateField(validators=[validate_deadline])
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.description
