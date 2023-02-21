@@ -26,6 +26,17 @@ class PublicCategoriesAPITests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, serializer.data)
 
+    def test_create_categories(self):
+        payload = {
+            'name': 'Food'
+        }
+        response = self.client.post(CATEGORY_URL, payload)
+
+        category = Category.objects.get(id=response.data['id'])
+
+        self.assertEqual(getattr(category, 'name'), payload['name'])
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
     def test_update_category(self):
         category = Category.objects.create(name='Refrigerator')
 

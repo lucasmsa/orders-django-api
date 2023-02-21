@@ -7,6 +7,7 @@ from category import serializers
 
 
 class CategoryViewSet(mixins.UpdateModelMixin,
+                      mixins.CreateModelMixin,
                       mixins.DestroyModelMixin,
                       mixins.ListModelMixin,
                       viewsets.GenericViewSet):
