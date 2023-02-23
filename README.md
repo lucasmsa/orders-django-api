@@ -45,7 +45,7 @@ This project is a web application built with Django that provides a simple inter
 
 - **Deploy**: Then it will be possible to deploy the application to the production environment. This can be done using a myriad of tools, such as Kubernetes, Docker Swarm, or AWS ECS. You'll need to specify the Docker image to use, as well as any other configuration options for the container.
 
-### 👾 How should the API be restructured to account for new entities separated from the order
+### 👾 How should the API be restructured to account for new entities separated from the `Order`?
 ---
 `pk` -> Primary Key
 <br>
