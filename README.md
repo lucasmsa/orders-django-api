@@ -1,4 +1,4 @@
-# 💻 Refera Technical Evaluation API
+# 💻 Orders management API
 
 This project is a web application built with Django that provides a simple interface for managing orders and categories, with an authenticated user. The application is containerized using Docker
 
